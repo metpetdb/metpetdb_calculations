@@ -1,9 +1,9 @@
 import os, sys
 
-sys.path.append('/home/court/metpetdb/metpetdb_calculations')
+sys.path.append('/home/ubuntu/metpetdb/metpetdb_calculations')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'metpetdb_calculations.settings'
 
-activate_this = '/home/court/.virtualenvs/metpetdb/bin/activate_this.py'
+activate_this = '/home/ubuntu/.virtualenvs/metpetdb/bin/activate_this.py'
 execfile(activate_this, dict(__file__=activate_this))
 
 import django.core.handlers.wsgi
