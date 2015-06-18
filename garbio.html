@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="vars" accept-charset="ISO-8859-1">
+  Fe/Fe+Mg for garnet (float): <input type="text" name="garnet"><br>
+  Fe/Fe+Mg for biotite (float): <input type="text" name="biotite"><br>
+</form>
+
+<br>
+<button onclick="calculate()">Submit</button>
+
+<p id="tc">TC at 5000 bars: </p>
+
+<script>
+function cbfunc(json)
+{
+   document.getElementById("tc").innerHTML += json.query.results.json["TC"];
+}
+function calculate()
+{
+    var garnet = document.getElementById("vars").elements[0].value;
+    var biotite = document.getElementById("vars").elements[1].value;
+    var url = "http://54.152.139.14/calc/garnbiotTC?format=json&p=5000&garnet="+garnet+"&biotite="+biotite;
+    var yql = "select * from json where url='"+url+"';";
+	yql = "http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(yql)+"&format=json"+"&callback=cbfunc";
+
+	var script = document.createElement("script");
+	script.setAttribute("src", yql);
+	script.setAttribute("type", "text/javascript");
+	document.getElementsByTagName('head')[0].appendChild(script);
+}
+</script>
+
+</body>
+</html>
