@@ -10,12 +10,12 @@
 <br>
 <button onclick="calculate()">Submit</button>
 
-<p id="tc">TC at 5000 bars: </p>
+<p id="tc"></p>
 
 <script>
 function cbfunc(json)
 {
-   document.getElementById("tc").innerHTML += json.query.results.json["TC"];
+   document.getElementById("tc").innerHTML = "TC at 5000 bars: " + json.query.results.json["TC"];
 }
 function calculate()
 {
