@@ -21,7 +21,7 @@ function calculate()
 {
     var garnet = document.getElementById("vars").elements[0].value;
     var biotite = document.getElementById("vars").elements[1].value;
-    var url = "http://54.152.139.14/calc/garnbiotTC?format=json&p=5000&garnet="+garnet+"&biotite="+biotite;
+    var url = "http://54.152.139.14/calc/?scriptname=garnbiotTC&format=json&p=5000&garnet="+garnet+"&biotite="+biotite;
     var yql = "select * from json where url='"+url+"';";
 	yql = "http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(yql)+"&format=json"+"&callback=cbfunc";
 
