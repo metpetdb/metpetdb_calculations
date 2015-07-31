@@ -1,0 +1,115 @@
+FORTRAN Subroutine API Documentation:
+
+To make an API call:
+	URL = http://54.152.139.14/calc/?scriptname=subroutinename&v1=a&v2=b&...&vn=z&format=json
+	in python
+		import json, urllib2
+		data = urllib2.urlopen(URL)
+		output = json.loads(data.read())
+
+	in javascript
+		var yql = "select * from json where url='"+URL+"';";
+		yql = "http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(yql)+"&format=json"+"&callback=cbfunc";
+		var script = document.createElement("script");
+		script.setAttribute("src", yql);
+		script.setAttribute("type", "text/javascript");
+		document.getElementsByTagName('head')[0].appendChild(script);
+		function cbfunc(json)
+		{
+			do stuff with json output (format: json.query.results.json[key];)
+		}
+
+	scriptname=subroutine tells the API which subroutine to call
+		the variables v1,...vn depend on which subroutine is specified
+		for example
+			http://54.152.139.14/calc/?scriptname=garbio_fe_mg&FeGarnet=0.8&MgGarnet=0.8&MnGarnet=0.8&CaGarnet=0.8&Fe3Garnet=0.8&SiBiotite=0.8&AlBiotite=0.8&TiBiotite=0.8&Fe3Biotite=0.8&MgBiotite=0.8&FeBiotite=0.8&MnBiotite=0.8&Pbars=5000&iCalib=1&format=json
+		variable names are not case sensitive!
+
+	format=json will return the input and output variables in a dictionary 
+		for example the output of the scriptname example is
+			{"iCalib": 1.0, "FeGarnet": 0.8, "MnBiotite": 0.8, "MnGarnet": 0.8, "AlBiotite": 0.8, "iError": 0.0, "TiBiotite": 0.8, "MgGarnet": 0.8, "CaGarnet": 0.8, "Pbars": 5000.0, "SiBiotite": 0.8, "MgBiotite": 0.8, "Fe3Garnet": 0.8, "Fe3Biotite": 0.8, "TC": 2459.368133566778, "FeBiotite": 0.8}
+
+
+SUBROUTINES:
+GarBio_Fe_Mg
+	name: Garnet-Biotite Fe-Mg exchange
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, Fe3Garnet, SiBiotite, AlBiotite, TiBiotite, Fe3Biotite, MgBiotite, FeBiotite, MnBiotite
+	other input: Pbars (pressure in bars), iCalib (number corresponding to calibration type selected by user)
+	output: TC
+
+GarChl_Fe_Mg
+	name: Garnet-Chlorite Fe-Mg exchange
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, MgChl, FeChl
+	other input: Pbars, iCalib
+	output: TC
+
+GarHbl_Fe_Mg
+	name: Garnet-Hornblende Fe-Mg exchange
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, MgHbl, FeHbl
+	other input: Pbars, iCalib
+	output: TC
+
+GarPhen_Fe_Mg
+	name: Garnet-Phengite Fe-Mg exchange
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, MgMus, FeMus
+	other input: Pbars, iCalib
+	output: TC
+
+GarIlm_Fe_Mn
+	name: Garnet-Ilmenite Fe-Mn exchange
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, FeIlm, MnIlm
+	other input: Pbars, iCalib
+	output: TC
+
+GarOpx_Fe_Mg
+	name: Garnet-Orthopyroxene Fe-Mg exchange
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, FeOpx, MgOpx
+	other input: Pbars, iCalib
+	output: TC
+
+GarOlivine_Fe_Mg
+	name: Garnet-Olivine Fe-Mg
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, FeOlivine, MgOlivine
+	other input: Pbars, iCalib
+	output: TC
+
+GarTourmaline_Fe_Mg
+	name: Garnet-Tourmaline Fe-Mg
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, FeTour, MgTour
+	other input: Pbars, iCalib
+	output: TC
+
+BiotiteTourmaline_Fe_Mg
+	name: Biotite-Tourmaline Fe-Mg
+	user input: FeBiotite, MgBiotite, FeTour, MgTour
+	other input: Pbars, iCalib
+	output: TC
+
+GarCord_Fe_Mg
+	name: Garnet-Cordierite Fe-Mg
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, FeCord, MgCord
+	other input: Pbars, iCalib
+	output: TC
+
+GarCpx_Fe_Mg
+	name: Garnet-Clinopyroxene Fe-Mg
+	user input: FeGarnet, MgGarnet, MnGarnet, CaGarnet, Fe3Garnet, FeCpx, MgCpx
+	other input: Pbars, iCalib
+	output: TC
+
+HbldPlag_Na_Ca
+	name: Hornblende-Plagioclase from Holland and Blundy (1994)
+	user input: SiHbl, AlHbl, TiHbl, Fe3Hbl, MgHbl, FeHbl, MnHbl, CaHbl, NaHbl, KHbl, NaPlag, CaPlag, KPlag
+	other input: Pbars, iCalib
+	output: TC
+
+MuscBiot_Tschermak
+	name: Muscovite-biotite Mg-tschermak exchange
+	user input: SiBiotite, AlBiotite, TiBiotite, Fe3Biotite, MgBiotite, FeBiotite, MnBiotite, Kbiotite, SiMuscovite, AlMuscovite, TiMuscovite, Fe3Muscovite, MgMuscovite, FeMuscovite, MnMuscovite, KMuscovite
+	other input: Pbars, iCalib
+	output: TC
+
+
+Coming Soon: Barometers!
+	Garnet-Plagioclase-Aluminosilicate-Quartz barometer
+	Garnet-Plagioclase-Hornblende-Quartz barometer

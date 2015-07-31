@@ -1189,9 +1189,7 @@
       implicit real*8 (x,w,c,r)
       integer*4 imole,imod
       real*8 TK,P,Xpy,Xalm,Xsp,Xgr,Ggar
-
-!f2py intent(in, out) Ggar
-
+      
       if (imole.eq.1) then
       x1=xpy
       x2=xalm
