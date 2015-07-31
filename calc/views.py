@@ -16,68 +16,64 @@ def calculate(request):
 	scriptname = request.GET.get('scriptname','').lower()
 
 	if scriptname == 'garnbiottc':
-		sys.path.insert(1,os.path.dirname(os.path.dirname(__file__))+'/static/garnbiotTC')
-		from garnbiotTC import garbio
-		args['TC'] = garbio(args['garnet'], args['biotite'], args['p'], args['TC'])
+		sys.path.insert(1,os.path.dirname(os.path.dirname(__file__))+'/static/garnbiottc')
+		from garnbiottc import garbio
+		args['tc'] = garbio(args['garnet'], args['biotite'], args['p'], args['tc'])
 	elif scriptname == 'garbio_fe_mg':
-		args['TC'] = garbio_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['Fe3Garnet'], args['SiBiotite'], args['AlBiotite'],
-			args['TiBiotite'], args['Fe3Biotite'], args['MgBiotite'], args['FeBiotite'],
-			args['MnBiotite'], args['Pbars'], 0, args['iCalib'], 0)
+		args['tc'] = garbio_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['fe3garnet'], args['sibiotite'], args['albiotite'],
+			args['tibiotite'], args['fe3biotite'], args['mgbiotite'], args['febiotite'],
+			args['mnbiotite'], args['pbars'], 0, args['icalib'], 0)
 	elif scriptname == 'garchl_fe_mg':
-		args['TC'] = garchl_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['MgChl'], args['FeChl'], args['Pbars'], 0,
-			args['iCalib'], 0)
+		args['tc'] = garchl_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['mgchl'], args['fechl'], args['pbars'], 0,
+			args['icalib'], 0)
 	elif scriptname == 'garhbl_fe_mg':
-		args['TC'] = garhbl_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['MgHbl'], args['FeHbl'], args['Pbars'], 0,
-			args['iCalib'], 0)
+		args['tc'] = garhbl_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['mghbl'], args['fehbl'], args['pbars'], 0,
+			args['icalib'], 0)
 	elif scriptname == 'garphen_fe_mg':
-		args['TC'] = garphen_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['MgMus'], args['FeMus'], args['Pbars'], 0,
-			args['iCalib'], 0)
+		args['tc'] = garphen_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['mgmus'], args['femus'], args['pbars'], 0,
+			args['icalib'], 0)
 	elif scriptname == 'garilm_fe_mn':
-		args['TC'] = garphen_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['FeIlm'], args['MnIlm'], args['Pbars'], 0,
-			args['iCalib'], 0)
+		args['tc'] = garphen_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['feilm'], args['mnilm'], args['pbars'], 0,
+			args['icalib'], 0)
 	elif scriptname == 'garopx_fe_mg':
-		args['TC'] = garphen_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['FeOpx'], args['MgOpx'], args['Pbars'], 0,
-			args['iCalib'], 0)
+		args['tc'] = garphen_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['feopx'], args['mgopx'], args['pbars'], 0,
+			args['icalib'], 0)
 	elif scriptname == 'garolivine_fe_mg':
-		args['TC'] = garphen_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['FeOlivine'], args['MgOlivine'], args['Pbars'], 0,
-			args['iCalib'], 0)
+		args['tc'] = garphen_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['feolivine'], args['mgolivine'], args['pbars'], 0,
+			args['icalib'], 0)
 	elif scriptname == 'gartourmaline_fe_g':
-		args['TC'] = garphen_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['FeTour'], args['MgTour'], args['Pbars'], 0,
-			args['iCalib'], 0)
+		args['tc'] = garphen_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['fetour'], args['mgtour'], args['pbars'], 0,
+			args['icalib'], 0)
 	elif scriptname == 'biotitetourmaline_fe_mg':
-		args['TC'] = biotitetourmaline_fe_mg(args['FeBiotite'], args['MgBiotite'], args['FeTour'],
-			args['MgTour'], args['Pbars'], 0, args['iCalib'], 0)
+		args['tc'] = biotitetourmaline_fe_mg(args['febiotite'], args['mgbiotite'], args['fetour'],
+			args['mgtour'], args['pbars'], 0, args['icalib'], 0)
 	elif scriptname == 'garcord_fe_mg':
-		args['TC'] = garphen_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['FeCord'], args['MgCord'], args['Pbars'], 0,
-			args['iCalib'], 0)
+		args['tc'] = garphen_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['fecord'], args['mgcord'], args['pbars'], 0,
+			args['icalib'], 0)
 	elif scriptname == 'garcpx_fe_mg':
-		args['TC'] = garcpx_fe_mg(args['FeGarnet'], args['MgGarnet'], args['MnGarnet'],
-			args['CaGarnet'], args['Fe3Garnet'], args['FeCpx'], args['MgCpx'], args['Pbars'],
-			0, args['iCalib'], 0)
+		args['tc'] = garcpx_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
+			args['cagarnet'], args['fe3garnet'], args['fecpx'], args['mgcpx'], args['pbars'],
+			0, args['icalib'], 0)
 	elif scriptname == 'hbldplag_na_ca':
-		args['TC'] = hbldplag_na_ca(args['SiHbl'], args['AlHbl'], args['TiHbl'],
-			args['Fe3Hbl'], args['MgHbl'], args['FeHbl'], args['MnHbl'], args['CaHbl'],
-			args['NaHbl'], args['KHbl'], args['NaPlag'], args['CaPlag,'], args['KPlag,'],
-			args['Pbars'], 0, args['iCalib'], 0)
+		args['tc'] = hbldplag_na_ca(args['sihbl'], args['alhbl'], args['tihbl'],
+			args['fe3hbl'], args['mghbl'], args['fehbl'], args['mnhbl'], args['cahbl'],
+			args['nahbl'], args['khbl'], args['naplag'], args['caplag,'], args['kplag,'],
+			args['pbars'], 0, args['icalib'], 0)
 	elif scriptname == 'muscbiot_tschermak':
-		args['TC'] = muscbiot_tschermak(args['SiBiotite'], args['AlBiotite'], args['TiBiotite'],
-			args['Fe3Biotite'], args['MgBiotite'], args['FeBiotite'], args['MnBiotite'],
-			args['Kbiotite'], args['SiMuscovite'], args['AlMuscovite'], args['TiMuscovite'],
-			args['Fe3Muscovite'], args['MgMuscovite'], args['FeMuscovite'], args['MnMuscovite'],
-			args['KMuscovite'], args['Pbars'], 0, args['iCalib'], 0)
-	elif scriptname == 'gs':
-		args['Ggar'] = gs(args['TK'], args['P'], args['Xpy'],
-			args['Xalm'], args['Xsp'], args['Xgr'], 0,
-			args['Imole'], args['imod'])
+		args['tc'] = muscbiot_tschermak(args['sibiotite'], args['albiotite'], args['tibiotite'],
+			args['fe3biotite'], args['mgbiotite'], args['febiotite'], args['mnbiotite'],
+			args['kbiotite'], args['simuscovite'], args['almuscovite'], args['timuscovite'],
+			args['fe3muscovite'], args['mgmuscovite'], args['femuscovite'], args['mnmuscovite'],
+			args['kmuscovite'], args['pbars'], 0, args['icalib'], 0)
 	else:
 		return StreamingHttpResponse("Invalid scriptname")
 
