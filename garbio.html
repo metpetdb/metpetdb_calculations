@@ -15,7 +15,7 @@
 <script>
 function cbfunc(json)
 {
-   document.getElementById("tc").innerHTML = "TC at 5000 bars: " + json.query.results.json["TC"];
+   document.getElementById("tc").innerHTML = "TC at 5000 bars: " + json.query.results.json["tc"];
 }
 function calculate()
 {
@@ -23,7 +23,7 @@ function calculate()
     var biotite = document.getElementById("vars").elements[1].value;
     var url = "http://54.152.139.14/calc/?scriptname=garnbiotTC&format=json&p=5000&garnet="+garnet+"&biotite="+biotite;
     var yql = "select * from json where url='"+url+"';";
-	yql = "http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(yql)+"&format=json"+"&callback=cbfunc";
+	yql = "http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(yql)+"&format=json&callback=cbfunc";
 
 	var script = document.createElement("script");
 	script.setAttribute("src", yql);

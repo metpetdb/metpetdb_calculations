@@ -1,19 +1,23 @@
 FORTRAN Subroutine API Documentation:
 
 To make an API call:
-	URL = http://54.152.139.14/calc/?scriptname=subroutinename&v1=a&v2=b&...&vn=z&format=json
 	in python
 		import json, urllib2
+		URL = http://54.152.139.14/calc/?scriptname=subroutinename&v1=a&v2=b&...&vn=z&format=json
 		data = urllib2.urlopen(URL)
 		output = json.loads(data.read())
 
 	in javascript
-		var yql = "select * from json where url='"+URL+"';";
-		yql = "http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(yql)+"&format=json"+"&callback=cbfunc";
-		var script = document.createElement("script");
-		script.setAttribute("src", yql);
-		script.setAttribute("type", "text/javascript");
-		document.getElementsByTagName('head')[0].appendChild(script);
+		function calculate()
+		{
+			URL = http://54.152.139.14/calc/?scriptname=subroutinename&v1=a&v2=b&...&vn=z&format=json
+			var yql = "select * from json where url='"+URL+"';";
+			yql = "http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(yql)+"&format=json"+"&callback=cbfunc";
+			var script = document.createElement("script");
+			script.setAttribute("src", yql);
+			script.setAttribute("type", "text/javascript");
+			document.getElementsByTagName('head')[0].appendChild(script);
+		}
 		function cbfunc(json)
 		{
 			do stuff with json output (format: json.query.results.json[key];)
@@ -27,7 +31,8 @@ To make an API call:
 
 	format=json will return the input and output variables in a dictionary 
 		for example the output of the scriptname example is
-			{"iCalib": 1.0, "FeGarnet": 0.8, "MnBiotite": 0.8, "MnGarnet": 0.8, "AlBiotite": 0.8, "iError": 0.0, "TiBiotite": 0.8, "MgGarnet": 0.8, "CaGarnet": 0.8, "Pbars": 5000.0, "SiBiotite": 0.8, "MgBiotite": 0.8, "Fe3Garnet": 0.8, "Fe3Biotite": 0.8, "TC": 2459.368133566778, "FeBiotite": 0.8}
+			{"icalib": 1.0, "fegarnet": 0.8, "mnbiotite": 0.8, "mngarnet": 0.8, "albiotite": 0.8, "mggarnet": 0.8, "tibiotite": 0.8, "sibiotite": 0.8, "cagarnet": 0.8, "pbars": 5000.0, "mgbiotite": 0.8, "fe3garnet": 0.8, "fe3biotite": 0.8, "tc": 2459.368133566778, "febiotite": 0.8}
+		return key names must be lower case!
 
 
 SUBROUTINES:

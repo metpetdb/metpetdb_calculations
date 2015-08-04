@@ -17,8 +17,8 @@ def calculate(request):
 
 	if scriptname == 'garnbiottc':
 		sys.path.insert(1,os.path.dirname(os.path.dirname(__file__))+'/static/garnbiottc')
-		from garnbiottc import garbio
-		args['tc'] = garbio(args['garnet'], args['biotite'], args['p'], args['tc'])
+		from garnbiotTC import garbio
+		args['tc'] = garbio(args['garnet'], args['biotite'], args['p'], 0)
 	elif scriptname == 'garbio_fe_mg':
 		args['tc'] = garbio_fe_mg(args['fegarnet'], args['mggarnet'], args['mngarnet'],
 			args['cagarnet'], args['fe3garnet'], args['sibiotite'], args['albiotite'],
